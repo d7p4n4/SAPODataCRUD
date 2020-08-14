@@ -1,0 +1,124 @@
+<mvc:View
+	controllerName="sap.ui.core.tutorial.odatav4.controller.App"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Shell>
+		<App busy="{appView>/busy}" class="sapUiSizeCompact">
+			<pages>
+				<Page title="{i18n>peoplePageTitle}">
+					<content>
+						<Table
+							id="peopleList"
+							growing="true"
+							growingThreshold="10"
+							items="{
+								path: '/Ac4yPersistentChild',
+								parameters: {
+									$count: true,
+									$$updateGroupId : 'peopleGroup'
+								}
+							}"
+							mode="SingleSelectLeft">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<ToolbarSpacer/>
+										<SearchField
+											id="searchField"
+											width="20%"
+											placeholder="{i18n>searchFieldPlaceholder}"
+											enabled="{= !${appView>/hasUIChanges}}"
+											search="onSearch"/>
+										<Button
+											id="addUserButton"
+											icon="sap-icon://add"
+											tooltip="{i18n>createButtonText}"
+											enabled="{= !${appView>/hasUIChanges}}"
+											press="onCreate">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="NeverOverflow"/>
+											</layoutData>
+										</Button>
+										<Button
+											id="deleteUserButton"
+											icon="sap-icon://delete"
+											tooltip="{i18n>deleteButtonText}"
+											enabled="{= !${appView>/hasUIChanges}}"
+											press="onDelete">
+											<layoutData>
+												<OverflowToolbarLayoutData priority="NeverOverflow"/>
+											</layoutData>
+										</Button>
+										<Button
+											id="refreshUsersButton"
+											icon="sap-icon://refresh"
+											enabled="{= !${appView>/hasUIChanges}}"
+											tooltip="{i18n>refreshButtonText}"
+											press="onRefresh"/>
+										<Button
+											id="sortUsersButton"
+											press="onSort"
+											enabled="{= !${appView>/hasUIChanges}}"
+											tooltip="{i18n>sortButtonText}"
+											icon="sap-icon://sort"/>
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<columns>
+								<Column id="id">
+									<Text text="{i18n>id}"/>
+								</Column>
+								<Column id="name">
+									<Text text="{i18n>name}"/>
+								</Column>
+								<Column id="age">
+									<Text text="{i18n>age}"/>
+								</Column>
+								<Column id="createdAt">
+									<Text text="{i18n>createdAt}"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Input value="{guid}"
+												liveChange="onInputChange"/>
+									</cells>
+									<cells>
+										<Input value="{name}"
+												valueLiveUpdate="true"
+												liveChange="onInputChange"/>
+									</cells>
+									<cells>
+										<Input value="{ages}"
+												liveChange="onInputChange"/>
+									</cells>
+									<cells>
+										<Input value="{createdAt}"
+												liveChange="onInputChange"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</content>
+					<footer>
+						<Toolbar visible="{appView>/hasUIChanges}">
+							<ToolbarSpacer/>
+							<Button
+								id="saveButton"
+								type="Emphasized"
+								text="{i18n>saveButtonText}"
+								enabled="{= ${message>/}.length === 0 &amp;&amp; ${appView>/nameEmpty} === false }"
+								press="onSave"/>
+							<Button
+								id="doneButton"
+								text="{i18n>cancelButtonText}"
+								press="onResetChanges"/>
+						</Toolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
