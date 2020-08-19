@@ -75,15 +75,16 @@
 								<Column id="age">
 									<Text text="{i18n>age}"/>
 								</Column>
-								<Column id="createdAt">
-									<Text text="{i18n>createdAt}"/>
+								<Column id="date">
+									<Text text="Date"/>
 								</Column>
 							</columns>
 							<items>
 								<ColumnListItem>
 									<cells>
-										<Input value="{guid}"
-												liveChange="onInputChange"/>
+										<Input value="{id}"
+												liveChange="onInputChange"
+												editable="false"/>
 									</cells>
 									<cells>
 										<Input value="{name}"
@@ -96,7 +97,8 @@
 									</cells>
 									<cells>
 										<Input value="{createdAt}"
-												liveChange="onInputChange"/>
+												liveChange="onInputChange"
+												placeholder="2000. jan. 01. 01:01:01"/>
 									</cells>
 								</ColumnListItem>
 							</items>

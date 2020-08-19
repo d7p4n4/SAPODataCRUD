@@ -37,10 +37,9 @@ sap.ui.define([
 			var oList = this.byId("peopleList"),
 				oBinding = oList.getBinding("items"),
 				oContext = oBinding.create({
-					"guid" : "",
+					"createdAt" : null,
 					"name" : "",
-					"ages" : 18,
-					"createdAt" : new sap.ui.model.odata.type.DateTimeOffset()
+					"ages" : 18
 				});
 
 			oContext.created().then(function () {

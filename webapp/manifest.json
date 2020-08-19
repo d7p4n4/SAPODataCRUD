@@ -17,7 +17,7 @@
 		"description": "{{appDescription}}",
 		"dataSources": {
 			"default": {
-				"uri": "https://localhost:44315/odata/",
+				"uri": "https://testodata.sycompla.hu/odata/",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "4.0"
